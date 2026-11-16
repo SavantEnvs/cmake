@@ -1,0 +1,12 @@
+# Upstream's in-tree libFuzzer harness Tests/Fuzzing/cmPackageInfoReaderFuzzer.cxx: the CPS (Common Package Specification) package-info reader.
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/cmPackageInfoReaderFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmPackageInfoReaderFuzzer
+cmds:
+  - cmd: /mayhem/cmPackageInfoReaderFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/Tests/Fuzzing/cmPackageInfoReader.dict
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmPackageInfoReaderFuzzer/testsuite

@@ -1,0 +1,23 @@
+# Upstream's in-tree libFuzzer harnesses (Tests/Fuzzing/CMakeLists.txt add_fuzzer() names) that
+# mayhem/build.sh builds as-is. cmScriptFuzzer and cmArchiveExtractFuzzer are not listed: their targets
+# are built from mayhem/harnesses/<name>.cxx instead (see the headers there); build.sh builds the other
+# harnesses in mayhem/harnesses/ the same way.
+xml_parser_fuzzer
+cmListFileLexerFuzzer
+cmListFileParserFuzzer
+cmGeneratorExpressionFuzzer
+cmGeneratorExpressionEvalFuzzer
+cmExprParserFuzzer
+cmPkgConfigParserFuzzer
+cmPkgConfigResolverFuzzer
+cmJSONParserFuzzer
+cmCMakePresetsFuzzer
+cmGccDepfileFuzzer
+cmStringAlgorithmsFuzzer
+cmVersionFuzzer
+cmCMakePathFuzzer
+cmGlobFuzzer
+cmELFFuzzer
+cmFileLockFuzzer
+cmFortranParserFuzzer
+cmPackageInfoReaderFuzzer

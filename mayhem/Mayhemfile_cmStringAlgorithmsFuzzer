@@ -1,0 +1,12 @@
+# Upstream's in-tree libFuzzer harness Tests/Fuzzing/cmStringAlgorithmsFuzzer.cxx: cmStringAlgorithms (split/join/trim/escape/number parsing).
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/cmStringAlgorithmsFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmStringAlgorithmsFuzzer
+cmds:
+  - cmd: /mayhem/cmStringAlgorithmsFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/Tests/Fuzzing/cmStringAlgorithms.dict
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmStringAlgorithmsFuzzer/testsuite

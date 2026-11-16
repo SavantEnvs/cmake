@@ -1,0 +1,14 @@
+# Upstream's in-tree libFuzzer harness Tests/Fuzzing/cmELFFuzzer.cxx: the ELF reader (cmELF: headers, sections, dynamic entries, RPATH/SONAME).
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/cmELFFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmELFFuzzer
+cmds:
+  - cmd: /mayhem/cmELFFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/Tests/Fuzzing/cmELF.dict
+    # upstream's Tests/Fuzzing/cmELFFuzzer.options: max_len = 524288
+    max_length: 524288
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmELFFuzzer/testsuite

@@ -1,0 +1,13 @@
+# Harness of ours (not in upstream's Tests/Fuzzing), mayhem/harnesses/cmDependsJavaParserFuzzer.cxx: CMake's Java source dependency scanner: cmDependsJavaParserHelper::ParseString, the flex lexer and bison parser cmDependsJava runs over a project's .java files.
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/cmDependsJavaParserFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmDependsJavaParserFuzzer
+cmds:
+  - cmd: /mayhem/cmDependsJavaParserFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/mayhem/cmDependsJavaParserFuzzer/cmDependsJavaParserFuzzer.dict
+    max_length: 65536
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmDependsJavaParserFuzzer/testsuite

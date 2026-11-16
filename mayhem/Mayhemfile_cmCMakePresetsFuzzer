@@ -1,0 +1,12 @@
+# Upstream's in-tree libFuzzer harness Tests/Fuzzing/cmCMakePresetsFuzzer.cxx: CMakePresets.json reading and preset-graph resolution.
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/cmCMakePresetsFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmCMakePresetsFuzzer
+cmds:
+  - cmd: /mayhem/cmCMakePresetsFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/Tests/Fuzzing/cmCMakePresets.dict
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmCMakePresetsFuzzer/testsuite

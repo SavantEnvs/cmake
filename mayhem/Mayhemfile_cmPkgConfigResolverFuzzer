@@ -1,0 +1,12 @@
+# Upstream's in-tree libFuzzer harness Tests/Fuzzing/cmPkgConfigResolverFuzzer.cxx: pkg-config variable interpolation, flag splitting and Requires parsing.
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/cmPkgConfigResolverFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmPkgConfigResolverFuzzer
+cmds:
+  - cmd: /mayhem/cmPkgConfigResolverFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/Tests/Fuzzing/cmPkgConfigResolver.dict
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmPkgConfigResolverFuzzer/testsuite

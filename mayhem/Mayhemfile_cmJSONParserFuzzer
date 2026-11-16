@@ -1,0 +1,12 @@
+# Upstream's in-tree libFuzzer harness Tests/Fuzzing/cmJSONParserFuzzer.cxx: the JSON reader (jsoncpp) and CMake's JSON helpers.
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/cmJSONParserFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmJSONParserFuzzer
+cmds:
+  - cmd: /mayhem/cmJSONParserFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/Tests/Fuzzing/cmJSONParser.dict
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmJSONParserFuzzer/testsuite

@@ -1,0 +1,12 @@
+# Upstream's in-tree libFuzzer harness Tests/Fuzzing/xml_parser_fuzzer.cc: cmXMLParser (expat-backed XML reader).
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/xml_parser_fuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: xml_parser_fuzzer
+cmds:
+  - cmd: /mayhem/xml_parser_fuzzer
+    libfuzzer: true
+    dictionary: /mayhem/Tests/Fuzzing/xml_parser.dict
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/xml_parser_fuzzer/testsuite

@@ -1,0 +1,18 @@
+# Archive extraction (cmSystemTools::ExtractTar over the bundled libarchive). Built from
+# mayhem/harnesses/cmArchiveExtractFuzzer.cxx: upstream's Tests/Fuzzing/cmArchiveExtractFuzzer.cxx, except that an
+# archive with a symlink or hard link entry is only listed, never extracted, because ExtractTar does not
+# set ARCHIVE_EXTRACT_SECURE_SYMLINKS and such an archive can write outside the scratch directory (the
+# reasons are in that file).
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/cmArchiveExtractFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmArchiveExtractFuzzer
+cmds:
+  - cmd: /mayhem/cmArchiveExtractFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/Tests/Fuzzing/cmArchiveExtract.dict
+    # upstream's Tests/Fuzzing/cmArchiveExtractFuzzer.options: max_len = 262144
+    max_length: 262144
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmArchiveExtractFuzzer/testsuite

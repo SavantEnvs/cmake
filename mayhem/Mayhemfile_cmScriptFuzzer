@@ -1,0 +1,16 @@
+# CMake's script interpreter in script mode (cmake -P), through cmake::Run(). Built from
+# mayhem/harnesses/cmScriptFuzzer.cxx: upstream's Tests/Fuzzing/cmScriptFuzzer.cxx with the command
+# set allow-listed, so an input cannot run programs, touch the filesystem or change the environment
+# for the inputs after it (the reasons are in that file).
+# Run-once reproducer for the same code: /mayhem/cmScriptFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmScriptFuzzer
+cmds:
+  - cmd: /mayhem/cmScriptFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/Tests/Fuzzing/cmScript.dict
+    # upstream's Tests/Fuzzing/cmScriptFuzzer.options: max_len = 262144
+    max_length: 262144
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmScriptFuzzer/testsuite

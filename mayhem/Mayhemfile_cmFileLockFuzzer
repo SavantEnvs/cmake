@@ -1,0 +1,12 @@
+# Upstream's in-tree libFuzzer harness Tests/Fuzzing/cmFileLockFuzzer.cxx: cmFileLock locking of fuzzer-chosen lock-file names.
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/cmFileLockFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmFileLockFuzzer
+cmds:
+  - cmd: /mayhem/cmFileLockFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/Tests/Fuzzing/cmFileLock.dict
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmFileLockFuzzer/testsuite

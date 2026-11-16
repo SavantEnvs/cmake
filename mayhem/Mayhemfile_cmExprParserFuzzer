@@ -1,0 +1,12 @@
+# Upstream's in-tree libFuzzer harness Tests/Fuzzing/cmExprParserFuzzer.cxx: the math(EXPR) expression parser.
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/cmExprParserFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmExprParserFuzzer
+cmds:
+  - cmd: /mayhem/cmExprParserFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/Tests/Fuzzing/cmExprParser.dict
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmExprParserFuzzer/testsuite

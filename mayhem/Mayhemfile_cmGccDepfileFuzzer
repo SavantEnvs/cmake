@@ -1,0 +1,12 @@
+# Upstream's in-tree libFuzzer harness Tests/Fuzzing/cmGccDepfileFuzzer.cxx: the GCC-style depfile (.d) reader.
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/cmGccDepfileFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmGccDepfileFuzzer
+cmds:
+  - cmd: /mayhem/cmGccDepfileFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/Tests/Fuzzing/cmGccDepfile.dict
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmGccDepfileFuzzer/testsuite

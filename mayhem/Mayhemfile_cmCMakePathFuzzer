@@ -1,0 +1,12 @@
+# Upstream's in-tree libFuzzer harness Tests/Fuzzing/cmCMakePathFuzzer.cxx: cmCMakePath path decomposition and normalization.
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/cmCMakePathFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmCMakePathFuzzer
+cmds:
+  - cmd: /mayhem/cmCMakePathFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/Tests/Fuzzing/cmCMakePath.dict
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmCMakePathFuzzer/testsuite

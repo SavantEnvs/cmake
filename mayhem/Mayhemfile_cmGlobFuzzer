@@ -1,0 +1,12 @@
+# Upstream's in-tree libFuzzer harness Tests/Fuzzing/cmGlobFuzzer.cxx: kwsys regular-expression engine (cmsys::RegularExpression compile/find on the input) and cmSystemTools::StringStartsWith/EndsWith. The input never reaches cmsys::Glob: upstream's harness only calls GetFiles() on an empty Glob.
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/cmGlobFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmGlobFuzzer
+cmds:
+  - cmd: /mayhem/cmGlobFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/Tests/Fuzzing/cmGlob.dict
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmGlobFuzzer/testsuite

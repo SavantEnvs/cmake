@@ -1,0 +1,13 @@
+# Harness of ours (not in upstream's Tests/Fuzzing), mayhem/harnesses/cmDependsCFuzzer.cxx: CMake's C/C++ #include scanner: cmDependsC::Scan (line reader, include-directive regex, CMAKE_INCLUDE_TRANSFORMS rewriting) that the Makefile generator runs over a project's sources and headers.
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/cmDependsCFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmDependsCFuzzer
+cmds:
+  - cmd: /mayhem/cmDependsCFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/mayhem/cmDependsCFuzzer/cmDependsCFuzzer.dict
+    max_length: 65536
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmDependsCFuzzer/testsuite

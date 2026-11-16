@@ -1,0 +1,12 @@
+# Upstream's in-tree libFuzzer harness Tests/Fuzzing/cmListFileLexerFuzzer.cxx: the CMakeLists.txt / .cmake lexer (cmListFileLexer).
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/cmListFileLexerFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmListFileLexerFuzzer
+cmds:
+  - cmd: /mayhem/cmListFileLexerFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/Tests/Fuzzing/cmListFileLexer.dict
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmListFileLexerFuzzer/testsuite

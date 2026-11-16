@@ -1,0 +1,12 @@
+# Upstream's in-tree libFuzzer harness Tests/Fuzzing/cmPkgConfigParserFuzzer.cxx: the pkg-config .pc file parser.
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/cmPkgConfigParserFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmPkgConfigParserFuzzer
+cmds:
+  - cmd: /mayhem/cmPkgConfigParserFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/Tests/Fuzzing/cmPkgConfigParser.dict
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmPkgConfigParserFuzzer/testsuite

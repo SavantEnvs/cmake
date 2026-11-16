@@ -1,0 +1,12 @@
+# Upstream's in-tree libFuzzer harness Tests/Fuzzing/cmVersionFuzzer.cxx: version-string parsing and comparison.
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/cmVersionFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmVersionFuzzer
+cmds:
+  - cmd: /mayhem/cmVersionFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/Tests/Fuzzing/cmVersion.dict
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmVersionFuzzer/testsuite

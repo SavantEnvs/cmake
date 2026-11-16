@@ -1,0 +1,14 @@
+# Upstream's in-tree libFuzzer harness Tests/Fuzzing/cmGeneratorExpressionEvalFuzzer.cxx: generator-expression evaluation against a small in-memory project.
+# Built by mayhem/build.sh against the sanitized, coverage-instrumented CMakeLib.
+# Run-once reproducer for the same code: /mayhem/cmGeneratorExpressionEvalFuzzer-standalone <input file>.
+project: savantenvs/cmake
+target: cmGeneratorExpressionEvalFuzzer
+cmds:
+  - cmd: /mayhem/cmGeneratorExpressionEvalFuzzer
+    libfuzzer: true
+    dictionary: /mayhem/Tests/Fuzzing/cmGeneratorExpressionEval.dict
+    # upstream's Tests/Fuzzing/cmGeneratorExpressionEvalFuzzer.options: max_len = 4098
+    max_length: 4098
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/cmGeneratorExpressionEvalFuzzer/testsuite
